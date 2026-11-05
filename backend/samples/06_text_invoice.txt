@@ -1,0 +1,7 @@
+Lakeview Supplies
+GSTIN: 27AACCL3333G1Z1
+Invoice Number: LV-1009
+Invoice Date: 2026-02-20
+Taxable Value: 2,000.00
+IGST @ 12%: 240.00
+Total Amount: 2,240.00

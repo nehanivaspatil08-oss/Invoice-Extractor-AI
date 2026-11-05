@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------- Theme colours (RGB triplets so Tailwind can add opacity) ---------- */
+:root {
+  --page: 245 246 243;      --surface: 255 255 255;   --sunk: 238 241 237;    --line: 221 227 222;
+  --ink: 20 32 28;          --muted: 98 113 106;
+  --brand: 11 122 107;      --brand-soft: 220 242 237; --on-brand: 255 255 255;
+  --ok: 21 128 61;          --ok-soft: 220 243 228;
+  --warn: 161 98 7;         --warn-soft: 254 243 212;
+  --bad: 190 42 62;         --bad-soft: 253 228 232;
+  --shadow: 20 32 28;
+  color-scheme: light;
+}
+.dark {
+  --page: 10 17 15;         --surface: 17 28 25;      --sunk: 24 38 34;         --line: 38 56 51;
+  --ink: 231 240 236;       --muted: 139 160 152;
+  --brand: 62 201 174;      --brand-soft: 17 55 48;   --on-brand: 6 28 24;
+  --ok: 94 212 142;         --ok-soft: 19 56 38;
+  --warn: 246 178 66;       --warn-soft: 58 44 14;
+  --bad: 255 128 142;       --bad-soft: 66 24 32;
+  --shadow: 0 0 0;
+  color-scheme: dark;
+}
+
+body { @apply bg-page text-ink font-sans antialiased; }
+
+/* subtle theme transition, only turned on after first paint (see theme.jsx) */
+html.theme-ready body, html.theme-ready .card, html.theme-ready .input, html.theme-ready .btn,
+html.theme-ready aside, html.theme-ready header, html.theme-ready table, html.theme-ready th, html.theme-ready td {
+  transition: background-color .25s ease, border-color .25s ease, color .25s ease;
+}
+@media (prefers-reduced-motion: reduce) { html.theme-ready * { transition: none !important; } }
+
+:focus-visible { @apply outline-none ring-2 ring-brand ring-offset-2 ring-offset-page; }
+
+@layer components {
+  .card { @apply bg-surface border border-line rounded-xl shadow-card; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold border border-line bg-surface text-ink hover:bg-sunk disabled:opacity-50 disabled:cursor-not-allowed; }
+  .btn-primary { @apply border-transparent bg-brand text-on-brand hover:bg-brand/90; }
+  .btn-danger { @apply text-bad hover:bg-bad-soft; }
+  .input { @apply w-full rounded-lg border border-line bg-surface px-3 py-2 text-sm text-ink placeholder:text-muted/70 focus:border-brand; }
+  .label { @apply block text-xs font-semibold text-muted mb-1; }
+  .num { font-variant-numeric: tabular-nums; }
+}

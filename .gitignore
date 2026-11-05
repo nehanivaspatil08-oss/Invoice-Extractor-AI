@@ -1,0 +1,36 @@
+backend/venv/
+backend/data/
+__pycache__/
+frontend/node_modules/
+frontend/dist/
+*.pyc
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# Database and uploaded files
+backend/data/
+backend/uploads/
+uploads/
+*.db
+*.sqlite
+*.sqlite3
+
+# Frontend generated files
+frontend/node_modules/
+frontend/dist/
+
+# Local backups
+*.backup
+*.bak
+
+# OS files
+.DS_Store
+Thumbs.db
