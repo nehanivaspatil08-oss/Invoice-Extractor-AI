@@ -9,7 +9,7 @@ import os
 import time
 import uuid
 from typing import Dict, List, Optional, Union
-
+from fastapi.staticfiles import StaticFiles
 from fastapi import FastAPI, File, HTTPException, Query, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, Response
@@ -278,3 +278,44 @@ def export(format: str = "xlsx", search: str = "", status: str = "", date_from: 
     else:
         raise HTTPException(400, "format must be xlsx, csv or json")
     return Response(body, media_type=media, headers={"Content-Disposition": f'attachment; filename="invoices.{format}"'})
+
+# ------------------------------------------------------------------
+# Serve React frontend in production
+FRONTEND_DIST = os.path.abspath(
+    os.path.join(os.path.dirname(__file__), "..", "frontend", "dist")
+)
+
+if os.path.isdir(FRONTEND_DIST):
+
+    app.mount(
+        "/assets",
+        StaticFiles(directory=os.path.join(FRONTEND_DIST, "assets")),
+        name="frontend-assets"
+    )
+
+    @app.get("/", include_in_schema=False)
+    def serve_frontend():
+        return FileResponse(
+            os.path.join(FRONTEND_DIST, "index.html")
+        )
+
+    @app.get("/{full_path:path}", include_in_schema=False)
+    def serve_frontend_routes(full_path: str):
+
+        if full_path == "api" or full_path.startswith("api/"):
+            raise HTTPException(404, "API route not found")
+
+        base = os.path.realpath(FRONTEND_DIST)
+        requested = os.path.realpath(
+            os.path.join(base, full_path)
+        )
+
+        if os.path.commonpath([base, requested]) != base:
+            raise HTTPException(404, "Not found")
+
+        if os.path.isfile(requested):
+            return FileResponse(requested)
+
+        return FileResponse(
+            os.path.join(FRONTEND_DIST, "index.html")
+        )
