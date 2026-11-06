@@ -4,23 +4,56 @@
 
 /* ---------- Theme colours (RGB triplets so Tailwind can add opacity) ---------- */
 :root {
-  --page: 245 246 243;      --surface: 255 255 255;   --sunk: 238 241 237;    --line: 221 227 222;
-  --ink: 20 32 28;          --muted: 98 113 106;
-  --brand: 11 122 107;      --brand-soft: 220 242 237; --on-brand: 255 255 255;
-  --ok: 21 128 61;          --ok-soft: 220 243 228;
-  --warn: 161 98 7;         --warn-soft: 254 243 212;
-  --bad: 190 42 62;         --bad-soft: 253 228 232;
-  --shadow: 20 32 28;
+  --page: 251 228 219;
+  --surface: 255 250 248;
+  --sunk: 251 228 219;
+  --line: 223 182 178;
+
+  --ink: 25 0 25;
+  --muted: 133 79 108;
+
+  --brand: 82 43 91;
+  --brand-soft: 223 182 178;
+  --on-brand: 251 228 219;
+
+  --ok: 21 128 61;
+  --ok-soft: 220 243 228;
+
+  --warn: 161 98 7;
+  --warn-soft: 254 243 212;
+
+  --bad: 190 42 62;
+  --bad-soft: 253 228 232;
+
+  --shadow: 25 0 25;
+
   color-scheme: light;
 }
+
 .dark {
-  --page: 10 17 15;         --surface: 17 28 25;      --sunk: 24 38 34;         --line: 38 56 51;
-  --ink: 231 240 236;       --muted: 139 160 152;
-  --brand: 62 201 174;      --brand-soft: 17 55 48;   --on-brand: 6 28 24;
-  --ok: 94 212 142;         --ok-soft: 19 56 38;
-  --warn: 246 178 66;       --warn-soft: 58 44 14;
-  --bad: 255 128 142;       --bad-soft: 66 24 32;
+  --page: 25 0 25;
+  --surface: 43 18 76;
+  --sunk: 82 43 91;
+  --line: 133 79 108;
+
+  --ink: 251 228 219;
+  --muted: 223 182 178;
+
+  --brand: 223 182 178;
+  --brand-soft: 82 43 91;
+  --on-brand: 25 0 25;
+
+  --ok: 94 212 142;
+  --ok-soft: 19 56 38;
+
+  --warn: 246 178 66;
+  --warn-soft: 58 44 14;
+
+  --bad: 255 128 142;
+  --bad-soft: 66 24 32;
+
   --shadow: 0 0 0;
+
   color-scheme: dark;
 }
 

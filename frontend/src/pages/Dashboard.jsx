@@ -9,8 +9,26 @@ import { useTheme } from "../theme.jsx";
 
 // Recharts draws SVG, so it needs real colour values instead of CSS variables.
 const PALETTE = {
-  light: { brand: "#0B7A6B", ok: "#15803D", warn: "#A16207", bad: "#BE2A3E", muted: "#62716A", grid: "#DDE3DE", tip: "#FFFFFF", ink: "#14201C" },
-  dark: { brand: "#3EC9AE", ok: "#5ED48E", warn: "#F6B242", bad: "#FF808E", muted: "#8BA098", grid: "#263833", tip: "#111C19", ink: "#E7F0EC" },
+  light: {
+    brand: "#522B5B",
+    ok: "#15803D",
+    warn: "#A16207",
+    bad: "#BE2A3E",
+    muted: "#854F6C",
+    grid: "#DFB6B2",
+    tip: "#FFFAF8",
+    ink: "#190019",
+  },
+  dark: {
+    brand: "#DFB6B2",
+    ok: "#5ED48E",
+    warn: "#F6B242",
+    bad: "#FF808E",
+    muted: "#DFB6B2",
+    grid: "#854F6C",
+    tip: "#2B124C",
+    ink: "#FBE4DB",
+  },
 };
 
 const compact = (n) => new Intl.NumberFormat("en-IN", { notation: "compact", maximumFractionDigits: 1 }).format(n);
